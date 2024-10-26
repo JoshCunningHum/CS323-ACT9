@@ -1,0 +1,42 @@
+{
+  "name": "dimpas-cs323-act9",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.1.0",
+    "@formkit/auto-animate": "^0.8.2",
+    "@primevue/themes": "^4.1.1",
+    "@vueuse/core": "^11.1.0",
+    "@vueuse/math": "^11.1.0",
+    "gsap": "^3.12.5",
+    "pinia": "^2.2.4",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.1.1",
+    "tailwindcss-primeui": "^0.3.4",
+    "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@primevue/auto-import-resolver": "^4.1.1",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.17.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
+    "autoprefixer": "^10.4.20",
+    "npm-run-all2": "^7.0.1",
+    "postcss": "^8.4.47",
+    "sass-embedded": "^1.80.4",
+    "tailwindcss": "^3.4.14",
+    "typescript": "~5.6.0",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.10",
+    "vue-tsc": "^2.1.6"
+  }
+}

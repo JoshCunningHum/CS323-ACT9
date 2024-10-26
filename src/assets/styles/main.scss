@@ -1,0 +1,14 @@
+@use "tailwind";
+
+html {
+    font-size: 14px;
+}
+body {
+    @apply bg-surface-900;
+    font-family: "DM Sans Variable", sans-serif;
+}
+
+// Primevue Fixes
+.p-slider-handle {
+    @apply bg-primary-100;
+}
