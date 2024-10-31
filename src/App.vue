@@ -21,7 +21,7 @@ import DiffManchesterBlock from "./components/Block/DiffManchester.vue";
 
 // Config
 const configStore = useConfigStore();
-const { length } = storeToRefs(configStore);
+const { length, starts } = storeToRefs(configStore);
 
 // Input
 const input = ref<(1 | 0)[]>([]);
@@ -35,6 +35,7 @@ const randomize = () => {
             .map(() => Math.round(Math.random()))
     );
 };
+const toggleStart = () => set(starts, starts.value * -1 + 1);
 
 // Set to random on mount
 watchImmediate(length, randomize);
@@ -55,6 +56,12 @@ provide("sethovered", set.bind(null, hovered));
         <div class="flex justify-end mb-10" v-auto-animate>
             <div class="mr-auto h-min flex flex-col">
                 <Button v-tooltip="'Randomize'" icon="pi pi-wave-pulse" text @click="randomize" />
+                <Button
+                    v-tooltip="`Starts ${starts ? 'High' : 'Low'}`"
+                    :label="starts.toString()"
+                    text
+                    @click="toggleStart"
+                />
             </div>
             <BinaryInput v-model="input" />
         </div>

@@ -22,7 +22,13 @@ const reversed = computed({
         :style="{ width: freqWidth + 'px', paddingRight: MIN_INPUT * DIGIT_WIDTH + 'px' }"
         class="ml-auto"
     >
-        <Slider :min="MIN_INPUT" :max="MAX_INPUT" v-model="reversed" />
+        <Slider
+            :min="MIN_INPUT"
+            :max="MAX_INPUT"
+            v-model="reversed"
+            pt:range:class="bg-surface-700"
+            pt:root:class="bg-primary"
+        />
     </div>
 </template>
 

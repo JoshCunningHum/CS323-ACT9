@@ -6,14 +6,20 @@ import { defineStore, acceptHMRUpdate } from "pinia";
 import { ref } from "vue";
 
 export const useConfigStore = defineStore("config", () => {
-    const config = useLocalStorage("cs323-config", { length: 8 }, { deep: true, shallow: false });
+    const config = useLocalStorage(
+        "cs323-config",
+        { length: 8, starts: 0 },
+        { deep: true, shallow: false }
+    );
     const input_length = field(config, "length");
+    const starts = field(config, "starts", 0);
 
     const length = useClamp(input_length, MIN_INPUT, MAX_INPUT);
 
     return {
         config,
         input_length,
+        starts,
 
         length,
     };

@@ -3,11 +3,16 @@ import { useFrequencyHelper } from "@/hooks/useFrequenceHelper";
 import { computed, toRefs } from "vue";
 import FreqBlock from "../FreqBlock.vue";
 import { Pos } from "@/types/Pos";
+import { useConfigStore } from "@/stores/config";
+import { storeToRefs } from "pinia";
 
 const props = defineProps<{
     input: number[];
     index: number;
 }>();
+
+const config = useConfigStore();
+const { starts } = storeToRefs(config);
 
 const { index, input } = toRefs(props);
 const { current, prev, indexByValue } = useFrequencyHelper(input, index);
@@ -18,8 +23,10 @@ const center = [Pos.MidLeft, Pos.MidRight];
 
 const isUp = computed(() => !!(indexByValue(0) % 2));
 const line = computed(() => (current.value === 1 ? center : isUp.value ? up : down));
+
+const origins = [Pos.TopLeft, Pos.MidLeft];
 const left = computed(() => {
-    if (index.value === 0) return Pos.MidLeft;
+    if (index.value === 0) return origins[starts.value];
 
     const val = current.value;
     if (val === 1 && prev.value === 0) return (isUp.value ? up : down)[0];
